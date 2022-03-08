@@ -5,7 +5,10 @@ const { User } = require('../../models');
 router.get('/', (req, res) => {
     // Access our User model and run .findall() method
     // .findall() = SELECT * FROM users; in mySQL
-    User.findAll()
+    // exclude attribute is an array so as to add more columns
+    User.findAll({
+        attributes: { exclude: ['password'] }
+    })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
             console.log(err);
@@ -17,6 +20,7 @@ router.get('/', (req, res) => {
 // .findOne = SELECT * FROM users WHERE id = 1
 router.get('/:id', (req, res) => {
     User.findOne({
+        attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
         }
