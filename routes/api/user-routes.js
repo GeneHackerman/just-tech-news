@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
     // Access our User model and run .findall() method
     // .findall() = SELECT * FROM users; in mySQL
     User.findAll()
-        .then(dbUserData => req.json(dbUserData))
+        .then(dbUserData => res.json(dbUserData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
