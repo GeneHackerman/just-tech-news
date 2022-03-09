@@ -1,6 +1,7 @@
 const User = require('./User');
+const Post = require('./Post');
 
-module.exports = { User };
+module.exports = { User, Post };
 
 // this file is responsible for importing User model 
 // and exporting an object with its property
