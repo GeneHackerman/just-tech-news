@@ -1,7 +1,7 @@
 const User = require('./User');
 const Post = require('./Post');
 const Vote = require('./Vote');
-const Comment = require('./Comments');
+const Comment = require('./Comment');
 
 // create associations
 // this will link all posts to user via id
