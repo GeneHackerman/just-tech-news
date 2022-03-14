@@ -2,8 +2,6 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const {Post, User, Comment } = require('../models');
 
-// will switch to main branch currently to set posts 
-// for MVC module. 
 router.get('/', (req, res) => {
    Post.findAll({
        attributes: [
@@ -30,6 +28,7 @@ router.get('/', (req, res) => {
    })
    .then(dbPostData => {
        // pass a single post object into the homepage templte
+       console.log(dbPostData[0]);
        res.render('homepage', dbPostData[0]);
    })
    .catch(err => {
