@@ -13,6 +13,6 @@ app.use(routes);
 
 // turn on connection to db and server
 // setting force from false to true will auto-update the tables
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
 });
