@@ -4,6 +4,7 @@ const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
+    console.log('this is on the dashboard');
     Post.findAll({
         where: {
             // use the ID from the session
@@ -34,7 +35,7 @@ router.get('/', withAuth, (req, res) => {
     .then(dbPostData => {
         // serialize data before passing to template
         const posts = dbPostData.map(post => post.get({ plain: true }));
-        res.render('dashboard', { loggedIn: true });
+        res.render('dashboard', { posts, loggedIn: true });
     })
     .catch(err => {
         console.log(err);
